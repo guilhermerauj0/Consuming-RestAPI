@@ -54,7 +54,7 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void onErrorResponse(VolleyError error) {
                         // display result for any error
-                        Toast.makeText(MainActivity.this, "Error ocured", Toast.LENGTH_LONG);
+                        Toast.makeText(MainActivity.this, "Error ocured", Toast.LENGTH_LONG).show();
                     }
                 });
 
