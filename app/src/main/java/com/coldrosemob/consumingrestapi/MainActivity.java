@@ -5,6 +5,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -39,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 // VOLLEY REQUEST
                 RequestQueue queue = Volley.newRequestQueue(MainActivity.this);
-                String url = "http://www.google.com";
+                String url = "https://www.metaweather.com/api/location/search/?query=london";
 
                 // Request a string response from url
                 StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
@@ -47,13 +48,18 @@ public class MainActivity extends AppCompatActivity {
                             @Override
                             public void onResponse(String response) {
                                 // display result
+                                Toast.makeText(MainActivity.this, response, Toast.LENGTH_SHORT).show();
                             }
                         }, new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
                         // display result for any error
+                        Toast.makeText(MainActivity.this, "Error ocured", Toast.LENGTH_LONG);
                     }
                 });
+
+                // Add the request to the RequestQueue
+                queue.add(stringRequest);
             }
         });
 
